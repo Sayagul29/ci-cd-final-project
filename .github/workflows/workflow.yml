@@ -30,4 +30,4 @@ jobs:
       - name: Run unit tests with pytest
         run: |
           export PYTHONPATH=$PYTHONPATH:$(pwd)  # Добавляем текущую директорию в PYTHONPATH
-          pytest --cov=app  # Покрытие кода тестами
+          pytest --cov=app  # Покрытие кода тестами  
