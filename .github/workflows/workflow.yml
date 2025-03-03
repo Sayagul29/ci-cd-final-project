@@ -19,7 +19,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 nose pytest pytest-cov  # Добавили pytest
+          pip install -r requirements.txt || true  # Установит зависимости, если есть файл
+          pip install flake8 pytest pytest-cov  # Добавлен pytest вместо nose
 
       - name: Lint with flake8
         run: |
@@ -28,4 +29,5 @@ jobs:
 
       - name: Run unit tests with pytest
         run: |
-          pytest --cov=app  # Используем pytest вместо nosetests
+          export PYTHONPATH=$PYTHONPATH:$(pwd)  # Добавляем текущую директорию в PYTHONPATH
+          pytest --cov=app  # Покрытие кода тестами
